@@ -56,7 +56,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/com/bnk/cust/v2/fetchAccoutTransaction/2222222222",
+					"raw": "http://localhost:8080/com/bnk/cust/v2/accoutTransaction/2222222222",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -67,7 +67,7 @@
 						"bnk",
 						"cust",
 						"v2",
-						"fetchAccoutTransaction",
+						"accoutTransaction",
 						"2222222222"
 					]
 				}
