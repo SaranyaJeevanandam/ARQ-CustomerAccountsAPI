@@ -22,7 +22,7 @@ Springboot Microservice that fetchs the Customer details from H2 DB using Spring
         http://localhost:8080/com/bnk/cust/v2/accounts?pageSize=6&pageNo=0
 
        2. View Account Transactions:
-        http://localhost:8080/com/bnk/cust/v2/fetchAccoutTransaction/2222222222
+        http://localhost:8080/com/bnk/cust/v2/accoutTransaction/2222222222
 
 1. Accountnumbers available in DB for test purpose:
 111111111, 222222222, 333333333, 444444444, 555555555, 666666666
