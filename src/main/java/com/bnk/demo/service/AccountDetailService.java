@@ -4,6 +4,9 @@ import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.bnk.demo.model.AccountDetails;
@@ -19,14 +22,16 @@ public class AccountDetailService {
 	@Autowired
 	private AccountDetailsRepository accountDetailsRepository;
 
-	public List<AccountDetails> fetchAccountDetails(String xAppCorrelationID) throws ParseException {
+	public Page<AccountDetails> fetchAccountDetails(String xAppCorrelationID, int pageNo, int pageSize) throws ParseException {
 
 		List<AccountDetails> accountDetailsList = CustomerUtil.createCustomerAccountsToLoadInDB();
 
 		accountDetailsList.forEach(x->accountDetailsRepository.save(x));
 		log.debug("xAppCorrelationID {} => Transactions successfully loaded to DB", xAppCorrelationID);
 
-		return accountDetailsRepository.findAll();
+		Pageable paging = PageRequest.of(pageNo, pageSize);
+		
+		return accountDetailsRepository.findAll(paging);
 	}
 
 }

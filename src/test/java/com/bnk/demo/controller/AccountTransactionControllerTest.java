@@ -30,36 +30,33 @@ public class AccountTransactionControllerTest {
 	private AccountTransactionService accountTransactionService;
 	
 	@Test
-	@DisplayName("GET fetchAccoutTransaction/{accountNumber} - success")
+	@DisplayName("GET accoutTransaction/{accountNumber} - success")
 	void customer_transaction_success() throws Exception {
-		//List<AccountTransaction> accountTransactionResponse = CustomerUtil.updateAccountTransactionDetailsinDB();
 		
 		AccountTransaction accountTransaction = null;
 		doReturn(accountTransaction).when(accountTransactionService).fetchTransactionSummaryForAccountID(any(), any());
 
-		mockMvc.perform(get("/com/bnk/cust/v2/fetchAccoutTransaction/111111111").header("x-appCorrelationID", "CorrID")).andExpect(status().isOk());
+		mockMvc.perform(get("/com/bnk/cust/v2/accoutTransaction/111111111").header("x-appCorrelationID", "CorrID")).andExpect(status().isOk());
 	}
 	
 	@Test
-	@DisplayName("GET fetchAccoutTransaction/{accountNumber} - success")
+	@DisplayName("GET accoutTransaction/{accountNumber} - success")
 	void customer_transaction_blank_corrid() throws Exception {
-		//List<AccountTransaction> accountTransactionResponse = CustomerUtil.updateAccountTransactionDetailsinDB();
-		
+	
 		AccountTransaction accountTransaction = null;
 		doReturn(accountTransaction).when(accountTransactionService).fetchTransactionSummaryForAccountID(any(), any());
 
-		mockMvc.perform(get("/com/bnk/cust/v2/fetchAccoutTransaction/111111111").header("x-appCorrelationID", "")).andExpect(status().is4xxClientError());
+		mockMvc.perform(get("/com/bnk/cust/v2/accoutTransaction/111111111").header("x-appCorrelationID", "")).andExpect(status().is4xxClientError());
 	}
 	
 	@Test
-	@DisplayName("GET fetchAccoutTransaction/{accountNumber} - success")
+	@DisplayName("GET accoutTransaction/{accountNumber} - success")
 	void customer_transaction_blank_accountNumber() throws Exception {
-		//List<AccountTransaction> accountTransactionResponse = CustomerUtil.updateAccountTransactionDetailsinDB();
 		
 		AccountTransaction accountTransaction = null;
 		doReturn(accountTransaction).when(accountTransactionService).fetchTransactionSummaryForAccountID("CorrID", "111111111");
 
-		mockMvc.perform(get("/com/bnk/cust/v2/fetchAccoutTransaction/").header("x-appCorrelationID", "CorrID")).andExpect(status().is4xxClientError());
+		mockMvc.perform(get("/com/bnk/cust/v2/accoutTransaction/").header("x-appCorrelationID", "CorrID")).andExpect(status().is4xxClientError());
 	}
 	
 }

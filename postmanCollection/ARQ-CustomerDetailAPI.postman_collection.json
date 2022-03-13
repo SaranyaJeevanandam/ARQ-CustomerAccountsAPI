@@ -17,7 +17,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8080/com/bnk/cust/v2/fetchAccoutlist/",
+					"raw": "http://localhost:8080/com/bnk/cust/v2/accounts?pageSize=6&pageNo=0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -28,14 +28,16 @@
 						"bnk",
 						"cust",
 						"v2",
-						"fetchAccoutlist",
-						""
+						"accounts"
 					],
 					"query": [
 						{
-							"key": "",
-							"value": null,
-							"disabled": true
+							"key": "pageSize",
+							"value": "6"
+						},
+						{
+							"key": "pageNo",
+							"value": "0"
 						}
 					]
 				}

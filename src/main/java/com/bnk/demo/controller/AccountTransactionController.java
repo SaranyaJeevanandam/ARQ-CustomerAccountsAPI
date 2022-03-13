@@ -27,7 +27,7 @@ public class AccountTransactionController {
 	@Autowired
 	private AccountTransactionService accountTransactionService;
 	
-	@GetMapping("fetchAccoutTransaction/{accountNumber}")
+	@GetMapping("accoutTransaction/{accountNumber}")
     public ResponseEntity<AccountTransaction> fetchAccoutTransaction(@PathVariable(value = "accountNumber") @NotBlank @Size(max = 10) String accountNumer, @RequestHeader(value = "x-appCorrelationID", required=true) @NotBlank String xAppCorrelationID) {
 		
 		log.info("xAppCorrelationID {} => Account number requested to get Transactions: {} ", xAppCorrelationID, accountNumer);

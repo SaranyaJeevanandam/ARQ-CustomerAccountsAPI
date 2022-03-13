@@ -1,6 +1,7 @@
 package com.bnk.demo.controller;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -32,23 +33,23 @@ public class AccountDetailsControllerTest {
 	private AccountDetailService accountDetailService;
 
 	@Test
-	@DisplayName("GET /com/bnk/cust/v2/fetchAccoutlist/ - success")
+	@DisplayName("GET /com/bnk/cust/v2/accounts - success")
 	void customer_accountlist_success() throws Exception {
 		List<AccountDetails> accountDetailsResponse = null;
 		
-		doReturn(accountDetailsResponse).when(accountDetailService).fetchAccountDetails(any());
+		doReturn(accountDetailsResponse).when(accountDetailService).fetchAccountDetails(any(), anyInt(), anyInt());
 
-		mockMvc.perform(get("/com/bnk/cust/v2/fetchAccoutlist/").header("x-appCorrelationID", "CorrID")).andExpect(status().isOk());
+		mockMvc.perform(get("/com/bnk/cust/v2/accounts").header("x-appCorrelationID", "CorrID")).andExpect(status().isOk());
 	}
 	
 	@Test
-	@DisplayName("GET /com/bnk/cust/v2/fetchAccoutlist/ - error")
+	@DisplayName("GET /com/bnk/cust/v2/accounts - error")
 	void customer_accountlist_blank_corrID() throws Exception {
 		List<AccountDetails> accountDetailsResponse = null;
 		
-		doReturn(accountDetailsResponse).when(accountDetailService).fetchAccountDetails(any());
+		doReturn(accountDetailsResponse).when(accountDetailService).fetchAccountDetails(any(), anyInt(), anyInt());
 
-		mockMvc.perform(get("/com/bnk/cust/v2/fetchAccoutlist/").header("x-appCorrelationID", "")).andExpect(status().is4xxClientError());
+		mockMvc.perform(get("/com/bnk/cust/v2/accounts").header("x-appCorrelationID", "")).andExpect(status().is4xxClientError());
 	}
 
 }
